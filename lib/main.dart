@@ -1,20 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/sidebar/sidebar_layout.dart';
+import 'package:flutter/services.dart';
+import '../widget/button_widget.dart';
+import '../widget/navigation_drawer_widget.dart';
+import '../page/home_page.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  static final String title = 'Navigation Drawer';
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Nav Demo',
-      theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primaryColor: Colors.white,
+  Widget build(BuildContext context) => MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: title,
+        theme: ThemeData(primarySwatch: Colors.blue),
+        //home: MainPage(),
+        home: HomePage(),
+      );
+}
+
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        drawer: NavigationDrawerWidget(),
+        // endDrawer: NavigationDrawerWidget(),
+        appBar: AppBar(
+          title: Text(MyApp.title),
         ),
-      home: SideBarLayout(),
-    );
-  }
+        body: Builder(
+          builder: (context) => Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 32),
+            child: ButtonWidget(
+              icon: Icons.open_in_new,
+              text: 'Open Drawer',
+              onClicked: () {
+                Scaffold.of(context).openDrawer();
+                // Scaffold.of(context).openEndDrawer();
+              },
+            ),
+          ),
+        ),
+      );
 }
