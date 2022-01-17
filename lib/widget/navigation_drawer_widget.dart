@@ -3,6 +3,7 @@ import '../page/favourites_page.dart';
 import '../page/people_page.dart';
 import '../page/user_page.dart';
 import '../page/home_page.dart';
+import '../widget/change_theme_button_widget.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -14,8 +15,9 @@ class NavigationDrawerWidget extends StatelessWidget {
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
 
     return Drawer(
+      
       child: Material(
-        color: Color.fromRGBO(50, 75, 205, 1),
+        color: Theme.of(context).primaryColor,
         child: ListView(
           children: <Widget>[
             buildHeader(
@@ -54,7 +56,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                     onClicked: () => selectedItem(context, 2),
                   ),
                   const SizedBox(height: 24),
-                  Divider(color: Colors.white70),
+                  Divider(color: Theme.of(context).primaryColor),
                   const SizedBox(height: 24),
                   buildMenuItem(
                     text: 'Plugins',
@@ -95,12 +97,12 @@ class NavigationDrawerWidget extends StatelessWidget {
                 children: [
                   Text(
                     name,
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: TextStyle(fontSize: 20),
                   ),
                   const SizedBox(height: 4),
                   Text(
                     email,
-                    style: TextStyle(fontSize: 14, color: Colors.white),
+                    style: TextStyle(fontSize: 14),
                   ),
                 ],
               ),
@@ -108,7 +110,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               CircleAvatar(
                 radius: 24,
                 backgroundColor: Color.fromRGBO(30, 60, 168, 1),
-                child: Icon(Icons.add_comment_outlined, color: Colors.white),
+                child: Icon(Icons.add_comment_outlined),
               )
             ],
           ),
@@ -119,12 +121,12 @@ class NavigationDrawerWidget extends StatelessWidget {
     final color = Colors.white;
 
     return TextField(
-      style: TextStyle(color: color),
+      //style: TextStyle(color: color),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         hintText: 'Search',
-        hintStyle: TextStyle(color: color),
-        prefixIcon: Icon(Icons.search, color: color),
+        //hintStyle: TextStyle(color: color),
+        prefixIcon: Icon(Icons.search),
         filled: true,
         fillColor: Colors.white12,
         enabledBorder: OutlineInputBorder(
@@ -148,8 +150,8 @@ class NavigationDrawerWidget extends StatelessWidget {
     final hoverColor = Colors.white70;
 
     return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color)),
+      leading: Icon(icon),
+      title: Text(text),
       hoverColor: hoverColor,
       onTap: onClicked,
     );

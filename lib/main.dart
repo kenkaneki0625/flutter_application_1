@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_application_1/provider/theme_provider.dart';
+import 'package:provider/provider.dart';
 import '../widget/button_widget.dart';
 import '../widget/navigation_drawer_widget.dart';
 import '../page/home_page.dart';
@@ -18,13 +20,23 @@ class MyApp extends StatelessWidget {
   static final String title = 'Navigation Drawer';
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
+  Widget build(BuildContext context) => ChangeNotifierProvider(
+    
+    create: (context) => ThemeProvider(),
+    builder: (context, _){
+      final themeProvider = Provider.of<ThemeProvider>(context);
+      return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
-        theme: ThemeData(primarySwatch: Colors.blue),
+        //theme: ThemeData(primarySwatch: Colors.blue),
         //home: MainPage(),
+        themeMode: themeProvider.themeMode,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darkTheme,
         home: HomePage(),
       );
+    },
+    );
 }
 
 class MainPage extends StatefulWidget {
