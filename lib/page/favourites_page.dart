@@ -5,7 +5,6 @@ import '../page/focus_tab.dart';
 import '../page/formValidated_tab.dart';
 
 
-
 class FavouritesPage extends StatefulWidget {
   @override
   _FavouritesPageState createState() => _FavouritesPageState();

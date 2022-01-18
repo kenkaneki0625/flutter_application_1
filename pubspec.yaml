@@ -21,6 +21,9 @@ dev_dependencies:
 
   keyboard_dismisser: ^1.0.2
 
+  # format date time
+  intl: ^0.16.1
+
 flutter:
   uses-material-design: true
 
