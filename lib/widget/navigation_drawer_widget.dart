@@ -3,6 +3,7 @@ import '../page/favourites_page.dart';
 import '../page/people_page.dart';
 import '../page/user_page.dart';
 import '../page/home_page.dart';
+import '../page/datePicker_page.dart';
 import '../widget/change_theme_button_widget.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
@@ -51,9 +52,15 @@ class NavigationDrawerWidget extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   buildMenuItem(
-                    text: 'Favourites',
+                    text: 'Forms',
                     icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 2),
+                  ),
+                  const SizedBox(height: 16),
+                  buildMenuItem(
+                    text: 'Date Picker',
+                    icon: Icons.favorite_border,
+                    onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 24),
                   Divider(color: Theme.of(context).primaryColor),
@@ -174,6 +181,11 @@ class NavigationDrawerWidget extends StatelessWidget {
       case 2:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => FavouritesPage(),
+        ));
+        break;
+      case 3:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DatePickerPage(),
         ));
         break;
     }

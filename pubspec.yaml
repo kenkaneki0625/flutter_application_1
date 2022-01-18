@@ -19,6 +19,11 @@ dev_dependencies:
 
   flutter_native_splash: ^0.2.8
 
+  keyboard_dismisser: ^1.0.2
+
+  # format date time
+  intl: ^0.16.1
+
 flutter:
   uses-material-design: true
 

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import '../widget/navigation_drawer_widget.dart';
+import '../page/form_tab.dart';
+import '../page/focus_tab.dart';
+import '../page/formValidated_tab.dart';
+
 
 class FavouritesPage extends StatefulWidget {
   @override
@@ -10,9 +14,9 @@ class _FavouritesPageState extends State<FavouritesPage> {
   int currentIndex = 0;
   // Replace with pages
   final screens = [
-    Center(child: Text('Nav 1', style: TextStyle(fontSize: 60))),
-    Center(child: Text('Nav 2', style: TextStyle(fontSize: 60))),
-    Center(child: Text('Nav 3', style: TextStyle(fontSize: 60))),
+    FormTab(),
+    TextfieldFocusWidget(),
+    FormValidate(),
   ];
 
   @override
@@ -24,7 +28,8 @@ class _FavouritesPageState extends State<FavouritesPage> {
           backgroundColor: Colors.red,
         ),
         // body: screens[currentIndex],  // does not preserves the state of previous page
-        body: IndexedStack(   // preserves the state of previous page
+        body: IndexedStack(
+          // preserves the state of previous page
           index: currentIndex,
           children: screens,
         ),
