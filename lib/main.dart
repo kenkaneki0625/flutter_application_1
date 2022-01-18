@@ -17,7 +17,7 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Navigation Drawer';
+  static final String title = 'Flutter Demo project';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
