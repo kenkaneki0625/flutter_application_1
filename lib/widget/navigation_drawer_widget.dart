@@ -5,6 +5,10 @@ import '../page/user_page.dart';
 import '../page/home_page.dart';
 import '../page/datePicker_page.dart';
 import '../widget/change_theme_button_widget.dart';
+import '../page/popUp_page.dart';
+import '../page/toast_page.dart';
+import '../page/notes_page.dart';
+
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -44,37 +48,43 @@ class NavigationDrawerWidget extends StatelessWidget {
                     icon: Icons.home,
                     onClicked: () => selectedItem(context, 0),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   buildMenuItem(
                     text: 'People',
                     icon: Icons.people,
                     onClicked: () => selectedItem(context, 1),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   buildMenuItem(
                     text: 'Forms',
                     icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 2),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   buildMenuItem(
                     text: 'Date Picker',
                     icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 24),
-                  Divider(color: Theme.of(context).primaryColor),
+                  // Divider(color: Theme.of(context).primaryColor),
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: 'Plugins',
+                    text: 'PopUp',
                     icon: Icons.account_tree_outlined,
                     onClicked: () => selectedItem(context, 4),
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 10),
                   buildMenuItem(
-                    text: 'Notifications',
+                    text: 'Toast',
                     icon: Icons.notifications_outlined,
                     onClicked: () => selectedItem(context, 5),
+                  ),
+                  const SizedBox(height: 10),
+                  buildMenuItem(
+                    text: 'CRUD Notes',
+                    icon: Icons.notifications_outlined,
+                    onClicked: () => selectedItem(context, 6),
                   ),
                 ],
               ),
@@ -188,6 +198,22 @@ class NavigationDrawerWidget extends StatelessWidget {
           builder: (context) => DatePickerPage(),
         ));
         break;
+      case 4:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => PopUpPage(),
+        ));
+        break;
+      case 5:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => ToastPage(),
+        ));
+        break;
+      case 6:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => NotesPage(),
+        ));
+        break;
+        
     }
   }
 }

@@ -3,6 +3,7 @@ import '../widget/date_range_picker_widget.dart';
 import '../widget/datetime_picker_widget.dart';
 import '../widget/time_picker_widget.dart';
 import 'package:flutter/material.dart';
+import '../widget/navigation_drawer_widget.dart';
 
 class DatePickerPage extends StatefulWidget {
   @override
@@ -14,6 +15,12 @@ class _DatePickerPageState extends State<DatePickerPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        drawer: NavigationDrawerWidget(),
+        appBar: AppBar(
+          title: Text('Date Picker'),
+          centerTitle: true,
+          backgroundColor: Colors.red,
+        ),
         bottomNavigationBar: buildBottomBar(),
         body: buildPages(),
       );
