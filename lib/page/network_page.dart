@@ -9,7 +9,11 @@ class NetworkCachePage extends StatefulWidget {
 }
 
 class _NetworkCachePageState extends State<NetworkCachePage> {
-  int index = 0;
+  static final customCacheManager =
+      CacheManager(Config('customCacheKey', stalePeriod: Duration(days: 15),
+      maxNrOfCacheObjects: 100,
+      ),
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -51,16 +55,22 @@ class _NetworkCachePageState extends State<NetworkCachePage> {
   Widget buildImage(int index) => ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: CachedNetworkImage(
+          cacheManager: customCacheManager,
           key: UniqueKey(),
           imageUrl: 'https://source.unsplash.com/random?sig=$index/100*100',
           height: 50,
           width: 50,
           fit: BoxFit.cover,
+          maxHeightDiskCache: 75,
           // placeholder: (context, url) => Center(child: CircularProgressIndicator(),),
           placeholder: (context, url) => Container(color: Colors.black12),
-          errorWidget: (context, url, error) => Container(color: Colors.black12,
-          child: Icon(Icons.error, color: Colors.red,),),
-
+          errorWidget: (context, url, error) => Container(
+            color: Colors.black12,
+            child: Icon(
+              Icons.error,
+              color: Colors.red,
+            ),
+          ),
         ),
       );
 
