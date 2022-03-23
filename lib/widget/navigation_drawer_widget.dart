@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/page/network_page.dart';
 import '../page/favourites_page.dart';
 import '../page/people_page.dart';
 import '../page/user_page.dart';
@@ -45,11 +44,6 @@ class NavigationDrawerWidget extends StatelessWidget {
                   buildSearchField(),
                   const SizedBox(height: 24),
                   buildMenuItem(
-                    text: 'Network cache',
-                    icon: Icons.account_tree_outlined,
-                    onClicked: () => selectedItem(context, 7),
-                  ),
-                  buildMenuItem(
                     text: 'Home',
                     icon: Icons.home,
                     onClicked: () => selectedItem(context, 0),
@@ -72,6 +66,9 @@ class NavigationDrawerWidget extends StatelessWidget {
                     icon: Icons.favorite_border,
                     onClicked: () => selectedItem(context, 3),
                   ),
+                  const SizedBox(height: 24),
+                  // Divider(color: Theme.of(context).primaryColor),
+                  const SizedBox(height: 24),
                   buildMenuItem(
                     text: 'PopUp',
                     icon: Icons.account_tree_outlined,
@@ -214,11 +211,6 @@ class NavigationDrawerWidget extends StatelessWidget {
       case 6:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => NotesPage(),
-        ));
-        break;
-      case 7:
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => NetworkCachePage(),
         ));
         break;
         
