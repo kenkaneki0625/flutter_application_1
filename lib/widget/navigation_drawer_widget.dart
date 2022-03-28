@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/page/network_page.dart';
+import 'package:flutter_application_1/page/search_list.dart';
 import '../page/favourites_page.dart';
 import '../page/people_page.dart';
 import '../page/user_page.dart';
@@ -9,7 +10,6 @@ import '../widget/change_theme_button_widget.dart';
 import '../page/popUp_page.dart';
 import '../page/toast_page.dart';
 import '../page/notes_page.dart';
-
 
 class NavigationDrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -21,7 +21,6 @@ class NavigationDrawerWidget extends StatelessWidget {
         'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
 
     return Drawer(
-      
       child: Material(
         color: Theme.of(context).primaryColor,
         child: ListView(
@@ -48,6 +47,11 @@ class NavigationDrawerWidget extends StatelessWidget {
                     text: 'Network cache',
                     icon: Icons.account_tree_outlined,
                     onClicked: () => selectedItem(context, 7),
+                  ),
+                  buildMenuItem(
+                    text: 'Search List',
+                    icon: Icons.account_tree_outlined,
+                    onClicked: () => selectedItem(context, 8),
                   ),
                   buildMenuItem(
                     text: 'Home',
@@ -221,7 +225,11 @@ class NavigationDrawerWidget extends StatelessWidget {
           builder: (context) => NetworkCachePage(),
         ));
         break;
-        
+      case 8:
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => SearchListPage(),
+        ));
+        break;
     }
   }
 }
